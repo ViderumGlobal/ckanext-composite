@@ -1,6 +1,8 @@
 {% import 'macros/form.html' as form %}
+{% resource 'composite/rome.js' %}
 {% resource 'composite/composite-repeating.js' %}
 {% resource 'composite/composite.css' %}
+{% resource 'composite/rome.css' %}
 
 {%- snippet 'scheming/form_snippets/composite_header.html', field=field, inline=field.help_inline -%}
 
@@ -62,9 +64,14 @@
           control_classes=[],
           extra_html="",
           is_required=h.scheming_field_required(subfield)) -%}
-            <input id="{{ id or name }}" type="{{ type }}" name="{{ name }}"
+            {% if type == 'date' %}
+              {% set input_type = 'text' %}
+            {% else %}
+              {% set input_type = 'type' %}
+            {% endif %}
+            <input id="{{ id or name }}" type="{{ input_type }}" name="{{ name }}"
                  value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}"
-                 {{ form.attributes(attrs) }} class="medinput"/>
+                 {{ form.attributes(attrs) }} class="medinput scheming-datepicker"/>
             {% if subfield_index>1 %}
                {%- snippet 'scheming/form_snippets/help_text.html', field=subfield -%}
             {% endif %}

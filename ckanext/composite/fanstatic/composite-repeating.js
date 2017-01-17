@@ -16,6 +16,22 @@ this.ckan.module('composite-repeating', function (jQuery, _) {
      */
     initialize: function () {
 
+      var dates = this.el.find('.scheming-datepicker');
+      var dateOptions;
+
+      // Create datepicker instance for every date field
+      if (dates) {
+        dateOptions = {
+          time: false, 
+          weekStart: 1, 
+          inputFormat: 'DD-MM-YYYY'
+        };
+
+        dates.each(function(i, dateElement) {
+          rome(dateElement, dateOptions);
+        });
+      }
+
       if (!jQuery('html').hasClass('ie7')) {
         jQuery.proxyAll(this, /_on/);
 
@@ -54,6 +70,7 @@ this.ckan.module('composite-repeating', function (jQuery, _) {
      */
     newField: function (element) {
       newEl = this.cloneField(element);
+      console.log(newEl);
       this.el.append(newEl);
     },
 
