@@ -18,6 +18,7 @@ this.ckan.module('composite-repeating', function (jQuery, _) {
 
       var dates = this.el.find('.scheming-datepicker');
       var dateOptions;
+      var currentLang;
 
       // Create datepicker instance for every date field
       if (dates) {
@@ -26,6 +27,9 @@ this.ckan.module('composite-repeating', function (jQuery, _) {
           weekStart: 1, 
           inputFormat: 'DD-MM-YYYY'
         };
+        currentLang = $('html').attr('lang') || 'en';
+
+        moment.locale(currentLang);
 
         dates.each(function(i, dateElement) {
           rome(dateElement, dateOptions);
