@@ -7,7 +7,7 @@ if (dates) {
     dateOptions = {
         time: false,
         weekStart: 1,
-        inputFormat: 'DD-MM-YYYY'
+        inputFormat: 'DD.MM.YYYY'
     };
     currentLang = $('html').attr('lang') || 'en';
 

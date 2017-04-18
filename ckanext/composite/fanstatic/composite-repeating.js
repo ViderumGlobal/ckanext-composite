@@ -25,7 +25,7 @@ this.ckan.module('composite-repeating', function (jQuery, _) {
         dateOptions = {
           time: false, 
           weekStart: 1, 
-          inputFormat: 'DD-MM-YYYY'
+          inputFormat: 'DD.MM.YYYY'
         };
         currentLang = $('html').attr('lang') || 'en';
 
