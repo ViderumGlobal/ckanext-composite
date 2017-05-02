@@ -61,7 +61,7 @@
        is_required=h.scheming_field_required(subfield) 
        ) -%}
        <input id="{{ id or name }}" type="{{ input_type }}" name="{{ name }}"
-             value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}"
+             value="{{ h.composite_localize_date(value) | empty_and_escape }}" placeholder="{{ placeholder }}"
              {{ form.attributes(attrs) }} class="medinput scheming-datepicker"/>
 
      {%- snippet 'scheming/form_snippets/help_text.html', field=subfield -%}

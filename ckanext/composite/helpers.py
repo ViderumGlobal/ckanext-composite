@@ -183,3 +183,22 @@ def composite_repeating_get_value_dict_list(field_name, subfields, data, field_b
 
     return value_dict_list
 
+def lang():
+    # access this function late in case ckan
+    # is not set up fully when importing this module
+    from ckantoolkit import h
+    return h.lang()
+
+def composite_localize_date(date):
+    if date:
+        if lang() == 'de':
+            div = '.'
+        else:
+            div = '/'
+        if date[2] not in ['/', '.', '-']:
+            localized_date = date[8:]+div+date[5:7]+div+date[:4]
+        else:
+            localized_date = date[:2]+div+date[3:5]+div+date[6:]
+        return localized_date
+    else:
+        return '' 
